@@ -16,6 +16,8 @@ class GetStacks
     public function execute()
     {
         $flatStacks = Stack::orderBy('index')->orderBy('order')->get();
+        if (count($flatStacks) == 0)
+            return [];
         return $this->variations($this->structureStacks($flatStacks));
     }
 

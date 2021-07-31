@@ -7,6 +7,7 @@
 - `npm install`
 - `php artisan migrate`
 - `npm run dev` or `npm run watch`
+- `php artisan storage:link`
 - `php artisan serve`
 
 ```
