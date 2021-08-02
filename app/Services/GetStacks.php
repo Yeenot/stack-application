@@ -42,16 +42,16 @@ class GetStacks
      * @param array $items
      * @return array
      */
-    private function variations($items)
+    private function variations($items, $deep = 0)
     {
         if (count($items) === 1)
-            return $items[0];
+            return $deep === 0 ? [$items[0]] : $items[0];
 
         $stacks = [];
         foreach($items[0] as $item) {
             // Get remaining items and get combinations
             $remainingItems = array_values(Arr::except($items, 0));
-            $children = $this->variations($remainingItems);
+            $children = $this->variations($remainingItems, $deep + 1);
 
             // Assign combinations to every item
             foreach ($children as $child) {
@@ -61,6 +61,5 @@ class GetStacks
         }
 
         return $stacks;
-
     }
 }
